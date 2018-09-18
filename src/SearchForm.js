@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { withApollo } from 'react-apollo';
-import gql from 'graphql-tag';
 
 
 class Search extends Component {
@@ -18,12 +17,12 @@ class Search extends Component {
         this.props.onSearchChange(e.target.value);
     }
 
-    executeSearch = async (e) => {
+    async executeSearch(e) {
         e.preventDefault();
         const { searchValue } = this.state;
         const result = await this.props.client.query({
             query: this.props.graphQLQuery,
-            variables: { searchValue: searchValue }
+            variables: { searchValue }
         });
         this.props.onSubmitSearch(result);
     }
