@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import FavoritesDashboard from './FavoritesDashboard';
+import FavoritesDashboard from './Components/FavoritesDashboard';
 
 class App extends Component {
   render() {

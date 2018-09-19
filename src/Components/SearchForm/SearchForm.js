@@ -3,8 +3,8 @@ import { withApollo } from 'react-apollo';
 
 
 class Search extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             searchValue: ''
         }

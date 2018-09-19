@@ -3,7 +3,7 @@ import {
     graphql,
 } from 'react-apollo';
 
-import { VIEW_STARRED_REPOS_QUERY } from './GraphQLQueries';
+import { VIEW_STARRED_REPOS_QUERY } from '../../GraphQLQueries';
 
 const FavoriteList = (props) => {
     const { data: { loading, error, user }, onRemove } = props;

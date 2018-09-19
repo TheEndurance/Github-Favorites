@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { withApollo, compose, graphql } from 'react-apollo';
-import RepoList from './RepoList';
-import FavoriteList from './FavoriteList';
-import Search from './SearchForm';
+import RepoList from './RepoList/RepoList';
+import FavoriteList from './FavoriteList/FavoriteList';
+import Search from './SearchForm/SearchForm';
 import {
     VIEW_STARRED_REPOS_QUERY,
     SEARCH_REPOS_QUERY,
     STAR_REPO_MUTATION,
     UNSTAR_REPO_MUTATION,
-} from './GraphQLQueries';
+} from '../GraphQLQueries';
 
 
 class FavoritesDashboard extends Component {
@@ -17,7 +17,8 @@ class FavoritesDashboard extends Component {
         this.state = {
             repos: [],
         };
-        this.onSubmitSearch = this.onSubmitSearch.bind(this);
+        this.doUpdateRepoList = this.doUpdateRepoList.bind(this);
+        this.doClearRepoList = this.doClearRepoList.bind(this);
         this.doStarRepo = this.doStarRepo.bind(this);
         this.doUnstarRepo = this.doUnstarRepo.bind(this);
     }
@@ -40,14 +41,18 @@ class FavoritesDashboard extends Component {
         });
     }
    
-    onSubmitSearch(result) {
+    doUpdateRepoList(result) {
         this.setState({
             repos: [...result.data.search.nodes]
         });
     }
 
-    onSearchChange() {
-
+    doClearRepoList(searchValue) {
+        if(searchValue.length === 0){
+            this.setState({
+                repos: []
+            });
+        }
     }
 
     render() {
@@ -58,8 +63,8 @@ class FavoritesDashboard extends Component {
                 </header>
                 <div>
                     <Search
-                        onSearchChange={this.onSearchChange}
-                        onSubmitSearch={this.onSubmitSearch}
+                        onSearchChange={this.doClearRepoList}
+                        onSubmitSearch={this.doUpdateRepoList}
                         graphQLQuery={SEARCH_REPOS_QUERY} />
                     <RepoList
                         repos={this.state.repos}
