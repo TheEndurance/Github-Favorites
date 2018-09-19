@@ -1,0 +1,14 @@
+section {
+    padding:2rem;
+}
+
+header {
+    padding: 1rem;
+    background-color: #7433F1;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+    margin:0;
+}

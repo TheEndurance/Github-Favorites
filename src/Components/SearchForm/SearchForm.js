@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withApollo } from 'react-apollo';
 
-
+import Styles from './SearchForm.css';
 class Search extends Component {
     constructor(props) {
         super(props);
@@ -29,14 +29,14 @@ class Search extends Component {
     render() {
         return (
             <form>
-                <input type='text'
+                <input className="search" type='text'
                     name={this.props.name}
                     id={this.props.id}
                     value={this.state.searchValue}
                     onChange={this.handleSearchChange}
 
                 />
-                <button onClick={this.executeSearch}>Search</button>
+                <button className="primary-purple-button" onClick={this.executeSearch}>Search</button>
             </form>
         )
     }

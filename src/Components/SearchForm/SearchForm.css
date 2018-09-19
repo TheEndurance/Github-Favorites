@@ -1,0 +1,18 @@
+.primary-purple-button {    
+    padding: 0.70rem 2rem 0.7rem 2rem;
+    border-radius: 5px;
+    border-style: unset;
+    background-color: #7433F1;
+    color: white;
+    font-weight: bold;
+}
+
+input.search {
+    margin: 0 1rem 0 1rem;
+    padding: 0.6rem;
+    width: 50%;
+    border-radius: 5px;
+    border-style: solid;
+    border-color: gray;
+    border-width: thin;
+}

@@ -10,6 +10,8 @@ import {
     UNSTAR_REPO_MUTATION,
 } from '../GraphQLQueries';
 
+import Styles from './FavoritesDashboard.css';
+
 
 class FavoritesDashboard extends Component {
     constructor() {
@@ -57,21 +59,25 @@ class FavoritesDashboard extends Component {
 
     render() {
         return (
-            <div>
-                <header>
-                    <h1>My Github Favorites</h1>
+            <div className="row">
+                <header className="col-md-12">
+                    <h1 className={Styles.h1}>My Github Favorites</h1>
                 </header>
-                <div>
-                    <Search
-                        onSearchChange={this.doClearRepoList}
-                        onSubmitSearch={this.doUpdateRepoList}
-                        graphQLQuery={SEARCH_REPOS_QUERY} />
-                    <RepoList
-                        repos={this.state.repos}
-                        onAdd={this.doStarRepo} />
+                <div className="col-md-6">
+                    <section>
+                        <Search
+                            onSearchChange={this.doClearRepoList}
+                            onSubmitSearch={this.doUpdateRepoList}
+                            graphQLQuery={SEARCH_REPOS_QUERY} />
+                        <RepoList
+                            repos={this.state.repos}
+                            onAdd={this.doStarRepo} />
+                    </section>
                 </div>
-                <div>
-                    <FavoriteList onRemove={this.doUnstarRepo} />
+                <div className="col-md-6">
+                    <section>
+                        <FavoriteList onRemove={this.doUnstarRepo} />
+                    </section>
                 </div>
             </div>
         )
