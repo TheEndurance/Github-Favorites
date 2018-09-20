@@ -3,7 +3,7 @@ section {
 }
 
 header {
-    padding: 1rem;
+    padding: 2rem;
     background-color: #7433F1;
 }
 
@@ -11,4 +11,12 @@ h1 {
     text-align: center;
     color: white;
     margin:0;
+}
+
+.lightVioletBg {
+    background-color: #F3ECFE;
+}
+
+div {
+    height: 100%;
 }

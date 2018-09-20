@@ -28,15 +28,15 @@ class Search extends Component {
     }
     render() {
         return (
-            <form>
-                <input className="search" type='text'
+            <form className={'col-md-12 col-sm-12'}>
+                <input className={Styles.search} type='text'
                     name={this.props.name}
                     id={this.props.id}
                     value={this.state.searchValue}
                     onChange={this.handleSearchChange}
 
                 />
-                <button className="primary-purple-button" onClick={this.executeSearch}>Search</button>
+                <button className={Styles.primaryPurpleButton} onClick={this.executeSearch}>Search</button>
             </form>
         )
     }

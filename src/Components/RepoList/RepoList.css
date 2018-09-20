@@ -1,0 +1,19 @@
+.link {
+	text-align: left;
+	color: #7433F1;
+	background: none;
+	margin: 0;
+	padding: 0;
+	border: none;
+    cursor: pointer;
+    -moz-user-select: text;
+    text-decoration: underline;
+}
+
+.link:hover{
+    text-decoration: initial
+}
+
+th, td {
+    text-align: left;
+}

@@ -1,4 +1,4 @@
-.primary-purple-button {    
+.primaryPurpleButton {    
     padding: 0.70rem 2rem 0.7rem 2rem;
     border-radius: 5px;
     border-style: unset;
@@ -8,11 +8,13 @@
 }
 
 input.search {
-    margin: 0 1rem 0 1rem;
-    padding: 0.6rem;
-    width: 50%;
-    border-radius: 5px;
-    border-style: solid;
-    border-color: gray;
-    border-width: thin;
+    margin: 0 1rem 0 0;
+    padding: 0.6rem 0.6rem 0.6rem 0.6rem;
+    width: 70%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+form {
+    margin-bottom: 3rem;
 }

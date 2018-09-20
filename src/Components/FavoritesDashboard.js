@@ -60,11 +60,11 @@ class FavoritesDashboard extends Component {
     render() {
         return (
             <div className="row">
-                <header className="col-md-12">
+                <header className="col-md-12 col-sm-12">
                     <h1 className={Styles.h1}>My Github Favorites</h1>
                 </header>
-                <div className="col-md-6">
-                    <section>
+                <div className="col-md-6 col-sm-6">
+                    <section className="row">
                         <Search
                             onSearchChange={this.doClearRepoList}
                             onSubmitSearch={this.doUpdateRepoList}
@@ -74,8 +74,8 @@ class FavoritesDashboard extends Component {
                             onAdd={this.doStarRepo} />
                     </section>
                 </div>
-                <div className="col-md-6">
-                    <section>
+                <div className={'col-md-6 col-sm-6 ' + Styles.lightVioletBg}>
+                    <section className="row">
                         <FavoriteList onRemove={this.doUnstarRepo} />
                     </section>
                 </div>
