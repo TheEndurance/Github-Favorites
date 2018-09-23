@@ -1,17 +1,19 @@
 import React from 'react';
 import Styles from './RepoList.css';
+import PropTypes from 'prop-types';
 
 
 const RepoList = (props) => {
     const { repos, onAdd } = props;
     const displayRepoList = () => {
+        if (!repos) return;
         return repos.map((repo, index) => {
             return (
-                <tr className='row' key={index}>
-                    <td className='col-md-4 col-sm-4'>{repo.nameWithOwner}</td>
-                    <td className='col-md-3 col-sm-3'>{repo.languages.nodes.length > 0 ? repo.languages.nodes[0].name : '-'}</td>
-                    <td className='col-md-3 col-sm-3'>{repo.releases.nodes.length > 0 ? repo.releases.nodes[0].tag.name : '-'}</td>
-                    <td className='col-md-2 col-sm-2'>
+                <tr className='table-four-column-grid' key={index}>
+                    <td>{repo.nameWithOwner}</td>
+                    <td>{repo.languages.nodes.length > 0 ? repo.languages.nodes[0].name : '-'}</td>
+                    <td>{repo.releases.nodes.length > 0 ? repo.releases.nodes[0].tag.name : '-'}</td>
+                    <td>
                         <button className={Styles.link} data-repo-id={repo.id} onClick={handleAdd}>Add</button>
                     </td>
                 </tr>
@@ -25,13 +27,13 @@ const RepoList = (props) => {
     }
 
     return (
-        <table className='col-md-12 col-sm-12'>
+        <table>
             <thead>
-                <tr className='row'>
-                    <th className='col-md-4 col-sm-4'>Name</th>
-                    <th className='col-md-3 col-sm-3'>Language</th>
-                    <th className='col-md-3 col-sm-3'>Latest Tag</th>
-                    <th className='col-md-2 col-sm-2'></th>
+                <tr className='table-four-column-grid'>
+                    <th>Name</th>
+                    <th>Language</th>
+                    <th>Latest Tag</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -41,4 +43,24 @@ const RepoList = (props) => {
     )
 }
 
+RepoList.propTypes = {
+    repos: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        nameWithOwner: PropTypes.string.isRequired,
+        languages: PropTypes.shape({
+            nodes: PropTypes.arrayOf(PropTypes.shape({
+                name: PropTypes.string
+            }))
+        }).isRequired,
+        releases: PropTypes.shape({
+            nodes: PropTypes.arrayOf(PropTypes.shape({
+                tag: PropTypes.shape({
+                    name: PropTypes.string
+                })
+            }))
+        }).isRequired
+    }))
+};
+
 export default RepoList;
+

@@ -17,3 +17,11 @@
 th, td {
     text-align: left;
 }
+
+table {
+    width: 100%;
+}
+
+th {
+    margin-bottom:0.5rem;
+}

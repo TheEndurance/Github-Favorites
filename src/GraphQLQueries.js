@@ -28,7 +28,7 @@ const SEARCH_REPOS_QUERY = gql`query($searchValue: String!)
 
 const VIEW_STARRED_REPOS_QUERY = gql`query 
 {
-    user(login:"TheEndurance"){
+    user(login:"RawaJalal"){
         starredRepositories(first: 20, ownedByViewer:false, orderBy:{field: STARRED_AT, direction: DESC}){
             nodes{
                 ... on Repository {

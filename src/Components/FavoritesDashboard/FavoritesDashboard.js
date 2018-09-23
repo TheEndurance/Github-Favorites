@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { withApollo, compose, graphql } from 'react-apollo';
-import RepoList from './RepoList/RepoList';
-import FavoriteList from './FavoriteList/FavoriteList';
-import Search from './SearchForm/SearchForm';
+import RepoList from '../RepoList/RepoList';
+import FavoriteList from '../FavoriteList/FavoriteList';
+import Search from '../SearchForm/SearchForm';
 import {
     VIEW_STARRED_REPOS_QUERY,
     SEARCH_REPOS_QUERY,
     STAR_REPO_MUTATION,
     UNSTAR_REPO_MUTATION,
-} from '../GraphQLQueries';
+} from '../../GraphQLQueries';
 
 import Styles from './FavoritesDashboard.css';
 
@@ -59,25 +59,27 @@ class FavoritesDashboard extends Component {
 
     render() {
         return (
-            <div className="row">
-                <header className="col-md-12 col-sm-12">
+            <div>
+                <header>
                     <h1 className={Styles.h1}>My Github Favorites</h1>
                 </header>
-                <div className="col-md-6 col-sm-6">
-                    <section className="row">
-                        <Search
-                            onSearchChange={this.doClearRepoList}
-                            onSubmitSearch={this.doUpdateRepoList}
-                            graphQLQuery={SEARCH_REPOS_QUERY} />
-                        <RepoList
-                            repos={this.state.repos}
-                            onAdd={this.doStarRepo} />
-                    </section>
-                </div>
-                <div className={'col-md-6 col-sm-6 ' + Styles.lightVioletBg}>
-                    <section className="row">
-                        <FavoriteList onRemove={this.doUnstarRepo} />
-                    </section>
+                <div className="two-column-grid">
+                    <div>
+                        <section>
+                            <Search
+                                onSearchChange={this.doClearRepoList}
+                                onSubmitSearch={this.doUpdateRepoList}
+                                graphQLQuery={SEARCH_REPOS_QUERY} />
+                            <RepoList
+                                repos={this.state.repos}
+                                onAdd={this.doStarRepo} />
+                        </section>
+                    </div>
+                    <div className={Styles.lightVioletBg}>
+                        <section>
+                            <FavoriteList onRemove={this.doUnstarRepo} />
+                        </section>
+                    </div>
                 </div>
             </div>
         )
@@ -88,4 +90,4 @@ export default compose(
     withApollo,
     graphql(UNSTAR_REPO_MUTATION, { name: "unfavoriteRepoMutation" }),
     graphql(STAR_REPO_MUTATION, { name: "favoriteRepoMutation" }),
-)(FavoritesDashboard)
+)(FavoritesDashboard);

@@ -5,3 +5,14 @@ html {
 #root {
     height:100%;
 }
+
+.two-column-grid {
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    
+}
+
+.table-four-column-grid{
+    display:grid;
+    grid-template-columns: 3fr 2fr 2fr 2fr;
+}

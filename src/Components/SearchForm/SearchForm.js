@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withApollo } from 'react-apollo';
+import PropTypes from 'prop-types';
 
 import Styles from './SearchForm.css';
 class Search extends Component {
@@ -28,18 +29,21 @@ class Search extends Component {
     }
     render() {
         return (
-            <form className={'col-md-12 col-sm-12'}>
+            <form>
                 <input className={Styles.search} type='text'
-                    name={this.props.name}
-                    id={this.props.id}
                     value={this.state.searchValue}
                     onChange={this.handleSearchChange}
 
                 />
-                <button className={Styles.primaryPurpleButton} onClick={this.executeSearch}>Search</button>
+                <button id='search-button' className={Styles.primaryPurpleButton} onClick={this.executeSearch}>Search</button>
             </form>
         )
     }
+}
+
+Search.propTypes = {
+    onSearchChange : PropTypes.func.isRequired,
+    onSubmitSearch : PropTypes.func.isRequired
 }
 
 export default withApollo(Search)
